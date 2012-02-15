@@ -1,3 +1,13 @@
+# src/Enrico/BlogBundle/Resources/config/routing.yml
 EnricoBlogBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: EnricoBlogBundle:Default:index }
+    pattern:  /
+    defaults: { _controller: EnricoBlogBundle:Page:index }
+    requirements:
+        _method:  GET
+        
+EnricoBlogBundle_about:
+    pattern:  /about
+    defaults: { _controller: EnricoBlogBundle:Page:about }
+    requirements:
+        _method:  GET
+        
