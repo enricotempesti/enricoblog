@@ -1,0 +1,25 @@
+{# src/Blogger/BlogBundle/Resources/views/Page/contact.html.twig #}
+{% extends 'EnricoBlogBundle::layout.html.twig' %}
+
+{% block title %}Contact{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Contat Enricoblog</h1>
+    </header>
+
+    <p>Contatta Enricoblog?</p>
+
+    <form action="{{ path('EnricoBlogBundle_contact') }}" method="post" {{ form_enctype(form) }} class="enrico">
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.body) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

@@ -11,3 +11,10 @@ EnricoBlogBundle_about:
     requirements:
         _method:  GET
         
+EnricoBlogBundle_contact:
+    pattern:  /contact
+    defaults: { _controller: EnricoBlogBundle:Page:contact }
+    requirements:
+        _method:  GET|POST
+
+        
