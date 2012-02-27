@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
-
+    - { resource: @EnricoBlogBundle/Resources/config/config.yml }
 framework:
     #esi:             ~
     #translator:      { fallback: %locale% }

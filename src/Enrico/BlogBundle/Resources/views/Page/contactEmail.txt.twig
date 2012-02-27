@@ -1,0 +1,7 @@
+{# src/Blogger/BlogBundle/Resources/view/Page/contactEmail.txt.twig #}
+Richiesta di informazioni  spedite da- {{ enquiry.name }} -alle- {{ "now" | date(" H:i d-m-Y ") }}.
+
+Replica_A: {{ enquiry.email }}
+Soggetto: {{ enquiry.subject }}
+Testo:
+{{ enquiry.body }}

@@ -31,10 +31,18 @@ class PageController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            // Perform some action, such as sending an email
+        	
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Contacto da enricoBlog')
+            ->setFrom('enquiries@symblog.co.uk')
+            ->setTo($this->container->getParameter('Enrico_blog.emails.contact_email'))
+            ->setBody($this->renderView('EnricoBlogBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
+        $this->get('mailer')->send($message);
 
-            // Redirect - This is important to prevent users re-posting
-            // the form if they refresh the page
+        $this->get('session')->setFlash('Enrico-notice', 'La tua richiesta è stata spedita con successo!');
+
+        // Redirect - This is important to prevent users re-posting
+        // the form if they refresh the page
             return $this->redirect($this->generateUrl('EnricoBlogBundle_contact'));
         }
     }

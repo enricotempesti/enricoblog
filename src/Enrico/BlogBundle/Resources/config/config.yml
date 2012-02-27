@@ -1,0 +1,4 @@
+# src/Blogger/BlogBundle/Resources/config/config.yml
+parameters:
+    # Blogger contact email address
+    enrico_blog.emails.contact_email: entemp@tin.it
