@@ -17,4 +17,10 @@ EnricoBlogBundle_contact:
     requirements:
         _method:  GET|POST
 
+EnricoBlogBundle_blog_show:
+    pattern:  /{id}
+    defaults: { _controller: EnricoBlogBundle:Blog:show }
+    requirements:
+        _method:  GET
+        id: \d+
         

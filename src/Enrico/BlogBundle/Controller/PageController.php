@@ -39,7 +39,7 @@ class PageController extends Controller
             ->setBody($this->renderView('EnricoBlogBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
         $this->get('mailer')->send($message);
 
-        $this->get('session')->setFlash('Enrico-notice', 'La tua richiesta è stata spedita con successo!');
+        $this->get('session')->setFlash('enrico-notice','La tua richiesta è stata spedita con successo!');
 
         // Redirect - This is important to prevent users re-posting
         // the form if they refresh the page
