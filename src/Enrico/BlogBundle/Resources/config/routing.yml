@@ -24,3 +24,11 @@ EnricoBlogBundle_blog_show:
         _method:  GET
         id: \d+
         
+EnricoBlogBundle_comment_create:
+    pattern:  /comment/{blog_id}
+    defaults: { _controller: EnricoBlogBundle:Comment:create }
+    requirements:
+        _method:  POST
+        blog_id: \d+
+
+        

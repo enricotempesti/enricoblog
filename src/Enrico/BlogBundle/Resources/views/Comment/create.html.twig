@@ -1,0 +1,8 @@
+{% extends 'EnricoBlogBundle::layout.html.twig' %}
+
+{% block title %}Aggiungi un commento ad Enricoblog{% endblock%}
+
+{% block body %}
+    <h1>Aggiungi un commento ad Enricoblog post "{{ comment.blog.title }}"</h1>
+    {% include 'EnricoBlogBundle:Comment:form.html.twig' with { 'form': form } %}
+{% endblock %}
