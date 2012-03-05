@@ -30,5 +30,12 @@ EnricoBlogBundle_comment_create:
     requirements:
         _method:  POST
         blog_id: \d+
+        
+EnricoBlogBundle_nuovo_blog:
+    pattern:  /nuovo_blog
+    defaults: { _controller: EnricoBlogBundle:Page:nuovo_blog }
+    requirements:
+        _method:  GET
+
 
         

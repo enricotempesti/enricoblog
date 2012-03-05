@@ -60,6 +60,13 @@ class PageController extends Controller
     ));
     }
     
+    public function nuovo_blogAction()
+    
+    {
+    return $this->render('EnricoBlogBundle:Page:nuovo_blog.html.twig');
+    }
+    
+    
     
     
 }
