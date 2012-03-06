@@ -44,7 +44,10 @@ class Blog
      * @ORM\Column(type="text")
      */
     protected $tags;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     */
     protected $comments;
 
     /**
@@ -224,4 +227,10 @@ class Blog
     {
        $this->setUpdated(new \DateTime());
     }
+    
+    public function __toString()
+    {
+    return $this->getTitle();
+    }
+    
 }

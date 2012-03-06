@@ -44,7 +44,10 @@ class Blog
      * @ORM\Column(type="text")
      */
     protected $tags;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     */
     protected $comments;
 
     /**
@@ -230,4 +233,24 @@ class Blog
     return $this->getTitle();
     }
     
+
+    /**
+     * Add comments
+     *
+     * @param Enrico\BlogBundle\Entity\Comment $comments
+     */
+    public function addComment(\Enrico\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }

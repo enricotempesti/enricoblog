@@ -13,17 +13,19 @@ use Doctrine\ORM\EntityRepository;
 class BlogRepository extends EntityRepository
 {
 	
-	public function getLatestBlogs($limit = null)
-    {
-        $qb = $this->createQueryBuilder('b')
-                   ->select('b')
-                   ->addOrderBy('b.created', 'DESC');
+public function getLatestBlogs($limit = null)
+{
+    $qb = $this->createQueryBuilder('b')
+               ->select('b, c')
+               ->leftJoin('b.comments', 'c')
+               ->addOrderBy('b.created', 'DESC');
 
-        if (false === is_null($limit))
-            $qb->setMaxResults($limit);
+    if (false === is_null($limit))
+        $qb->setMaxResults($limit);
 
-        return $qb->getQuery()
-                  ->getResult();
-    }
+    return $qb->getQuery()
+              ->getResult();
+}
+	
 	
 }
