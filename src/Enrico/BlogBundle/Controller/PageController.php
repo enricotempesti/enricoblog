@@ -67,6 +67,31 @@ class PageController extends Controller
     }
     
     
+    public function sidebarAction()
+    {
+    $em = $this->getDoctrine()
+               ->getEntityManager();
+
+    $tags = $em->getRepository('EnricoBlogBundle:Blog')
+               ->getTags();
+
+    $tagWeights = $em->getRepository('EnricoBlogBundle:Blog')
+                     ->getTagWeights($tags);
+    
+        $commentLimit   = $this->container
+                           ->getParameter('enrico_blog.comments.latest_comment_limit');
+    $latestComments = $em->getRepository('EnricoBlogBundle:Comment')
+                         ->getLatestComments($commentLimit);
+
+    return $this->render('EnricoBlogBundle:Page:sidebar.html.twig', array(
+        'latestComments'    => $latestComments,
+        'tags'              => $tagWeights
+    ));
+    
+    }
+    
+    
+    
     
     
 }

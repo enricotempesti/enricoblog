@@ -2,3 +2,5 @@
 parameters:
     # Blogger contact email address
     enrico_blog.emails.contact_email: entemp@tin.it
+    enrico_blog.comments.latest_comment_limit: 10
+    
