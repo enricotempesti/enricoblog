@@ -12,7 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 
 class Blog
-{
+{   
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $slug;
+	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -233,4 +238,24 @@ class Blog
     return $this->getTitle();
     }
     
+
+    /**
+     * Add comments
+     *
+     * @param Enrico\BlogBundle\Entity\Comment $comments
+     */
+    public function addComment(\Enrico\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }
