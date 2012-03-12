@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Enrico\BlogBundle\EnricoBlogBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
+            new Enrico\SecurityBundle\EnricoSecurityBundle,
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

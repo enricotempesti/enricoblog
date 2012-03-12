@@ -37,5 +37,9 @@ EnricoBlogBundle_nuovo_blog:
     requirements:
         _method:  GET
 
-
+login:
+    pattern:   /login
+    defaults:  { _controller: EnricoSecurityBundle:Security:login }
+login_check:
+    pattern:   /login_check
         
