@@ -1,20 +1,38 @@
-<h1>Area riservata</h1>
+<link href="{{ asset('bundles/enricoblog/css/blog.css') }}" type="text/css" rel="stylesheet" />
 
+
+<div class="top">              
+                    {% block navigation %}
+                        <nav>
+                            <ul class="navigation">
+                                <li><a href="{{ path('EnricoBlogBundle_homepage') }}">Home</a></li>
+                                <li><a href="{{ path('EnricoBlogBundle_about') }}">About</a></li>
+                                <li><a href="{{ path('EnricoBlogBundle_contact') }}">Contact</a></li>
+                            </ul>
+                        </nav>
+                    {% endblock %}
+                </div>
+<h1>Area riservata</h1>
 {% if error %}
     <div><font color=red><h3>{{ error.message }}</h3></font></div>
 {% endif %}
 
-<form action="{{ path('login_check') }}" method="post">
+<form action="{{ path('login_check') }}" method="post" class="enrico">
+             
     <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" /><br>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" /><br><br>
 
     <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" /><br>
+    <input type="password" id="password" name="_password" /><br><br>
 
     {#
         Se si desidera controllare l'URL a cui l'utente viene rinviato in caso di successo (maggiori dettagli qui sotto)
         <input type="hidden" name="_target_path" value="/account" />
     #}
 
+        <input type="hidden" name="_target_path" value="/nuovo_blog" />
+
     <input type="submit" name="login" />
 </form>
+
+

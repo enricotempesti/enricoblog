@@ -7,7 +7,8 @@ use Symfony\Component\Security\Core\SecurityContext;
 class SecurityController extends Controller
 {
     public function loginAction()
-    {
+    {   
+    	
         $request = $this->getRequest();
         $session = $request->getSession();
 
