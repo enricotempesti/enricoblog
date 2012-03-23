@@ -9,7 +9,7 @@ security:
                 realm: "Area demo protetta"
 
     access_control:
-        - { path: ^/nuovo_blog, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
 
     providers:
         in_memory:

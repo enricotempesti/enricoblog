@@ -4,7 +4,7 @@ imports:
     - { resource: @EnricoBlogBundle/Resources/config/config.yml }
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator: ~
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -58,3 +58,35 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+    
+sonata_block:
+        default_contexts: [cms]
+        blocks:
+            sonata.admin.block.admin_list:
+                contexts:   [admin]
+
+            #sonata.admin_doctrine_orm.block.audit:
+            #    contexts:   [admin]
+
+            sonata.block.service.text:
+            sonata.block.service.action:
+            sonata.block.service.rss:
+
+            # Some specific block from the SonataMediaBundle
+            #sonata.media.block.media:
+            #sonata.media.block.gallery:
+            #sonata.media.block.feature_media:
+            
+services:
+    enrico.blog.admin.blog:
+      class: Enrico\BlogBundle\Admin\BlogAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: enrico_blog, label: blog }
+      arguments: [null, Enrico\BlogBundle\Entity\Blog, EnricoBlogBundle:BlogAdmin]
+      
+    enrico.blog.admin.comment:
+      class: Enrico\BlogBundle\Admin\CommentAdmin
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: enrico_blog, label: comment }
+      arguments: [null, Enrico\BlogBundle\Entity\Comment, EnricoBlogBundle:CommentAdmin]
+      
