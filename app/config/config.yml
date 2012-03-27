@@ -83,6 +83,8 @@ services:
       tags:
         - { name: sonata.admin, manager_type: orm, group: enrico_blog, label: blog }
       arguments: [null, Enrico\BlogBundle\Entity\Blog, EnricoBlogBundle:BlogAdmin]
+      calls:
+          - [ setLabelTranslatorStrategy, [ @sonata.admin.label.strategy.underscore ] ] 
       
     enrico.blog.admin.comment:
       class: Enrico\BlogBundle\Admin\CommentAdmin
