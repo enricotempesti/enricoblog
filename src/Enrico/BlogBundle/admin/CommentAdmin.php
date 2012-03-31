@@ -23,10 +23,8 @@ class CommentAdmin extends Admin
         }
 
         $formMapper
-            ->add('name')
-            ->add('email')
-            ->add('url', null, array('required' => false))
-            ->add('message')
+            ->add('user')
+            ->add('comment')
         ;
     }
 
@@ -37,9 +35,8 @@ class CommentAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('email')
-            ->add('message')
+            ->add('user')
+            ->add('comment')
         ;
     }
 
@@ -50,11 +47,9 @@ class CommentAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
+            ->addIdentifier('user')
             ->add('blog')
-            ->add('email')
-            ->add('url')
-            ->add('message');
+            ->add('comment');
     }
 
     /**

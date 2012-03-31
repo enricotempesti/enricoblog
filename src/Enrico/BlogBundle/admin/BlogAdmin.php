@@ -21,11 +21,10 @@ class BlogAdmin extends Admin
     protected function configureShowField(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('enabled')
             ->add('title')
-            ->add('abstract')
-            ->add('content')
-            ->add('tags')
+            ->add('author')
+            ->add('blog')
+            ->add('image')
         ;
     }
 
@@ -37,21 +36,12 @@ class BlogAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
-                ->add('enabled', null, array('required' => false))
-                ->add('title')
-                ->add('abstract')
-                ->add('content')
-            ->end()
-            ->with('Tags')
-                ->add('tags', 'sonata_type_model', array('expanded' => true))
-            ->end()
-            ->with('Comments')
-                ->add('comments', 'sonata_type_model')
-            ->end()
-            ->with('System Information', array('collapsed' => true))
-                ->add('created_at')
-            ->end()
+            
+            ->add('title')
+            ->add('author')
+            ->add('blog')
+            ->add('image')
+            ->add('tags')             
         ;
     }
 
@@ -64,17 +54,11 @@ class BlogAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
-            ->add('enabled')
-            ->add('abstract')
-            ->add('content')
+            ->add('author')
+            ->add('blog')
+            ->add('image', 'string', array('template' => 
+            'SonataMediaBundle:MediaAdmin:list_image.html.twig'))           
             ->add('tags')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'view' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
         ;
     }
 
@@ -87,8 +71,9 @@ class BlogAdmin extends Admin
     {
         $datagridMapper
             ->add('title')
-            ->add('enabled')
-            ->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))
+            ->add('author')
+            ->add('blog')
+            ->add('image')
         ;
     }
 }

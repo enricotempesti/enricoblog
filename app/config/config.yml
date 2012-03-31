@@ -92,3 +92,7 @@ services:
         - { name: sonata.admin, manager_type: orm, group: enrico_blog, label: comment }
       arguments: [null, Enrico\BlogBundle\Entity\Comment, EnricoBlogBundle:CommentAdmin]
       
+simple_things_entity_audit:
+    audited_entities:
+        - Enrico/BlogBundle\Entity\Blog
+        - Enrico/BlogBundle\Entity\Comment

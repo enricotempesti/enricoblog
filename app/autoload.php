@@ -21,6 +21,7 @@ $loader->registerNamespaces(array(
     'Knp\Bundle' => __DIR__.'/../vendor/bundles',
     'Knp\Menu'   => __DIR__.'/../vendor/knp/menu/src',
     'SimpleThings'      => __DIR__.'/../vendor/bundles',
+    'SimpleThings\\EntityAudit' => __DIR__.'/../vendor/bundles/',
     'Enrico'      => __DIR__.'/../src',
 ));
 $loader->registerPrefixes(array(
