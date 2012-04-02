@@ -10,7 +10,7 @@
     
     {% if app.session.hasFlash('enrico-notice') %}
     <div class="enrico-notice">
-        {{ app.session.flash('enrico-notice') }}
+        {{ app.session.flash('enrico-notice') }} <h3>messaggio inviato con successo</h3>
     </div>
     {% endif %}
 
