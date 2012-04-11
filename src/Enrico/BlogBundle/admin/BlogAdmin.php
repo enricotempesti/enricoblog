@@ -40,7 +40,7 @@ class BlogAdmin extends Admin
             ->add('title')
             ->add('author')
             ->add('blog')
-            ->add('image')
+            ->add('file', 'file', array('required' => false))
             ->add('tags')             
         ;
     }
@@ -76,4 +76,17 @@ class BlogAdmin extends Admin
             ->add('image')
         ;
     }
+    
+  public function prePersist($image) {
+    $this->saveFile($image);
+  }
+
+  public function preUpdate($image) {
+    $this->saveFile($image);
+  }
+ 
+  public function saveFile($image) {
+    $basepath = $this->getRequest()->getBasePath();
+    $image->upload($basepath);    
+  }
 }

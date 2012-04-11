@@ -4,6 +4,8 @@
 namespace Enrico\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Enrico\BlogBundle\Repository\BlogRepository")
@@ -64,6 +66,16 @@ class Blog
      * @ORM\Column(type="datetime")
      */
     protected $updated;
+    
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $path;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */    
+    public $file;
 
     /**
      * Get id
@@ -310,6 +322,52 @@ class Blog
 
     return $text;
     }
+    
+public function getAbsolutePath()
+  {
+      return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+  }
+
+  public function getWebPath()
+  {
+    return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+  }
+
+  protected function getUploadRootDir($basepath)
+  {
+    // the absolute directory path where uploaded documents should be saved
+    return $basepath.$this->getUploadDir();
+  }
+
+  protected function getUploadDir()
+  {
+    // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
+    return 'uploads\image';
+  }
+
+  public function upload($basepath)
+  {
+    // the file property can be empty if the field is not required
+    if (null === $this->file) {
+        return;
+    }
+   
+    if (null === $basepath) {
+        return;
+    }    
+   
+    // we use the original file name here but you should
+    // sanitize it at least to avoid any security issues
+
+    // move takes the target directory and then the target filename to move to
+    $this->file->move($this->getUploadRootDir($basepath), $this->file->getClientOriginalName());
+
+    // set the path property to the filename where you'ved saved the file
+    $this->setImage($this->file->getClientOriginalName());
+
+    // clean up the file property as you won't need it anymore
+    $this->file = null;
+  }
     
 
 }
