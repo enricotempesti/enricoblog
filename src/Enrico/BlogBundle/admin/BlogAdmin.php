@@ -77,16 +77,16 @@ class BlogAdmin extends Admin
         ;
     }
     
-  public function prePersist($image) {
-    $this->saveFile($image);
+  public function prePersist($file) {
+    $this->saveFile($file);
   }
 
-  public function preUpdate($image) {
-    $this->saveFile($image);
+  public function preUpdate($file) {
+    $this->saveFile($file);
   }
  
-  public function saveFile($image) {
+  public function saveFile($file) {
     $basepath = $this->getRequest()->getBasePath();
-    $image->upload($basepath);    
+    $file->upload($basepath);    
   }
 }
