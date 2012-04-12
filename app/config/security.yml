@@ -14,7 +14,7 @@ security:
     providers:
         in_memory:
             users:
-                enrico: { password: tempe08, roles: 'ROLE_ADMIN' }
+                enrico: { password: enricoblog, roles: 'ROLE_ADMIN' }
 
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
