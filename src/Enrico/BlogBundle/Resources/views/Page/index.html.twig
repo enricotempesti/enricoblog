@@ -4,7 +4,7 @@
 {% block body %}
     {% for blog in blogs %}
         <article class="blog">
-            <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+            <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|localizeddate() }}</time></div>
             <header>
                 <h2><a href="{{ path('EnricoBlogBundle_blog_show', { 'id': blog.id, 'slug': blog.slug }) }}">{{ blog.title }}</a></h2>
             </header>

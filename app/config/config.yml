@@ -78,6 +78,12 @@ sonata_block:
             #sonata.media.block.feature_media:
             
 services:
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
     enrico.blog.admin.blog:
       class: Enrico\BlogBundle\Admin\BlogAdmin
       tags:

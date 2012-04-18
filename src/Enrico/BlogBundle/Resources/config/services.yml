@@ -9,4 +9,4 @@ services:
         class: Enrico\BlogBundle\Twig\Extensions\EnricoBlogExtension
         tags:
             - { name: twig.extension }
-    
+   
