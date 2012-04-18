@@ -12,12 +12,12 @@
 </section>
 <section class="section">
     <header>
-        <h3>Latest Comments</h3>
+        <h3>Ultimi Commenti</h3>
     </header>
     {% for comment in latestComments %}
         <article class="comment">
             <header>
-                <p class="small"><span class="highlight">{{ comment.user }}</span> commented on
+                <p class="small"><span class="highlight">{{ comment.user }}</span> commento su
                     <a href="{{ path('EnricoBlogBundle_blog_show', { 'id': comment.blog.id,'slug': comment.blog.slug}) }}#comment-{{ comment.id }}">
                         {{ comment.blog.title }}
                     </a>

@@ -21,25 +21,25 @@ class EnricoBlogExtension extends \Twig_Extension
         {
             // Seconds
             $time = $delta;
-            $duration = $time . " second" . (($time > 1) ? "s" : "") . " ago";
+            $duration = $time . " secondi" . (($time > 1) ? "" : "") . " fa";
         }
         else if ($delta <= 3600)
         {
             // Mins
             $time = floor($delta / 60);
-            $duration = $time . " minute" . (($time > 1) ? "s" : "") . " ago";
+            $duration = $time . " minut" . (($time < 1) ? "o" : "") . (($time > 1) ? "i" : "") . " fa";
         }
         else if ($delta <= 86400)
         {
             // Hours
             $time = floor($delta / 3600);
-            $duration = $time . " hour" . (($time > 1) ? "s" : "") . " ago";
+            $duration = $time . " or" . (($time < 1) ? "a" : "").(($time > 1) ? "e" : "") . " fa";
         }
         else
         {
             // Days
             $time = floor($delta / 86400);
-            $duration = $time . " day" . (($time > 1) ? "s" : "") . " ago";
+            $duration = $time . " giorn" . (($time > 1) ? "i" : "").(($time < 1) ? "o" : "") . " fa";
         }
 
         return $duration;
