@@ -27,19 +27,19 @@ class EnricoBlogExtension extends \Twig_Extension
         {
             // Mins
             $time = floor($delta / 60);
-            $duration = $time . " minut" . (($time < 1) ? "o" : "") . (($time > 1) ? "i" : "") . " fa";
+            $duration = $time . " minut" . (($time <= 1) ? "o" : "") . (($time > 1) ? "i" : "") . " fa";
         }
         else if ($delta <= 86400)
         {
             // Hours
             $time = floor($delta / 3600);
-            $duration = $time . " or" . (($time < 1) ? "a" : "").(($time > 1) ? "e" : "") . " fa";
+            $duration = $time . " or" . (($time <= 1) ? "a" : "").(($time > 1) ? "e" : "") . " fa";
         }
         else
         {
             // Days
             $time = floor($delta / 86400);
-            $duration = $time . " giorn" . (($time > 1) ? "i" : "").(($time < 1) ? "o" : "") . " fa";
+            $duration = $time . " giorn" . (($time <= 1) ? "o" : "").(($time > 1) ? "i" : "") . " fa";
         }
 
         return $duration;
