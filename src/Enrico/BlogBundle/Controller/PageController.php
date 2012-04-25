@@ -15,8 +15,10 @@ class PageController extends Controller
         $em = $this->getDoctrine()
                    ->getEntityManager();
 
+        $blogLimit   = $this->container
+                           ->getParameter('enrico_blog.blog._limit');
         $blogs = $em->getRepository('EnricoBlogBundle:Blog')
-                    ->getLatestBlogs();
+                         ->getLatestBlogs($blogLimit);
 
         return $this->render('EnricoBlogBundle:Page:index.html.twig', array(
             'blogs' => $blogs
